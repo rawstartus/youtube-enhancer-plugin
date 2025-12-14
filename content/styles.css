@@ -1,0 +1,150 @@
+/* Playback Speed Controls */
+#ypp-speed-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    z-index: 999;
+}
+
+.ypp-speed-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 4px 8px;
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: "Roboto","Arial",sans-serif;
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: all 0.2s;
+}
+
+.ypp-speed-btn:hover {
+    background: rgba(255,255,255,0.2);
+    opacity: 1;
+}
+
+.ypp-speed-btn.active {
+    background: #ff0000;
+    border-color: #ff0000;
+    font-weight: bold;
+}
+
+/* Summarize Button */
+.ypp-summarize-btn {
+    background-color: #f1f1f1;
+    color: #0f0f0f;
+    border: none;
+    padding: 0 16px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 36px;
+    cursor: pointer;
+    border-radius: 18px;
+    margin-left: 8px;
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Dark mode compatible */
+html[dark] .ypp-summarize-btn {
+    background-color: rgba(255,255,255,0.1);
+    color: #f1f1f1;
+}
+
+html[dark] .ypp-summarize-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.ypp-summarize-btn:hover {
+    background-color: #d9d9d9;
+}
+
+/* Summary Modal */
+#ypp-summary-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #0d0d0d;
+    padding: 24px;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 90vw;
+    z-index: 10000; /* Above YouTube header */
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2);
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+html[dark] #ypp-summary-modal {
+    background: #212121;
+    color: #eee;
+}
+
+#ypp-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+html[dark] #ypp-summary-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#ypp-summary-title {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "YouTube Sans", Roboto, sans-serif;
+}
+
+.ypp-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    line-height: 1;
+}
+
+#ypp-summary-content {
+    white-space: pre-wrap;
+}
+
+#ypp-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+}
+
+.ypp-spinner {
+    border: 4px solid rgba(0,0,0,0.1);
+    border-left-color: #ff0000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+html[dark] .ypp-spinner {
+    border-color: rgba(255,255,255,0.1);
+    border-left-color: #ff0000;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

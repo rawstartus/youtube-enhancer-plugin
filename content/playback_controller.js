@@ -12,7 +12,7 @@ function injectSpeedControls() {
     // Insert before the settings gear (usually first or early in right controls)
     rightControls.insertBefore(container, rightControls.firstChild);
 
-    [2, 2.5, 3, 3.5, 4].forEach(rate => {
+    [1, 2, 2.5, 3, 3.5, 4].forEach(rate => {
         const btn = document.createElement('button');
         btn.textContent = `${rate}x`;
         btn.className = 'ypp-speed-btn';
@@ -52,7 +52,7 @@ const observer = new MutationObserver((mutations) => {
     const video = document.querySelector('video');
     if (video && !video.paused) {
         // Optionally keep enforcing speed, but let's trust video.playbackRate
-        if (video.playbackRate >= 2) {
+        if (video.playbackRate >= 1) {
             updateActiveButton(video.playbackRate);
         }
     }
@@ -67,10 +67,8 @@ injectSpeedControls();
 // Note: YouTube often resets speed on ad end.
 document.addEventListener('durationchange', function () {
     const video = document.querySelector('video');
-    if (video && currentCustomSpeed > 1) {
-        // Only re-apply if we purposefully set a high speed
-        // This can be annoying if user manually changed it back to 1x via normal controls.
-        // So we will only update visual state
+    if (video) {
+        // Update visual state if rate matches our last set custom speed
         if (video.playbackRate === currentCustomSpeed) {
             updateActiveButton(currentCustomSpeed);
         } else {
